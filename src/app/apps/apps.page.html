@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" mode="md"></ion-back-button>
+      <ion-searchbar placeholder="Buscar apps"></ion-searchbar>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-header >
+  <ion-list>
+    <ion-buttons>
+      <ion-slides>
+      <ion-slide>
+        <ion-label [routerLink]="['/home']" *ngFor="let pa of parati">
+          <ion-button style="text-transform: none;" [routerLink]=pa.redirectTo>Para tí</ion-button>        
+        </ion-label>
+
+        <ion-label [routerLink]="['/exitos']" *ngFor="let e of exitos">
+          <ion-button style="text-transform: none;" [routerLink]=e.redirectTo>Lista éxitos</ion-button>
+        </ion-label>
+    
+        <ion-button style="text-transform: none;">Infantiles</ion-button>
+      
+      </ion-slide>
+      <ion-slide>
+        <ion-button style="text-transform: none;">Premium</ion-button>
+  
+        <ion-button style="text-transform: none;">Selección del editor</ion-button>
+      </ion-slide>
+    </ion-slides>
+    </ion-buttons>
+  </ion-list>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let a of Imagenes" size="6">
+        <ion-img src={{a.img}} ></ion-img>
+        <h5>{{a.name}}</h5>
+        <h6>{{a.desc}}</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+<ion-footer slot="fixed" >
+  <ion-toolbar>  
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button [routerLink]="['/juegos']" *ngFor="let j of juegos" tab="schedule">
+            <ion-icon name={{j.icon}} [routerLink]=j.redirectTo></ion-icon>
+            <ion-label>{{j.name}}</ion-label>
+          </ion-tab-button>
+        
+          <ion-tab-button [routerLink]="['/apps']" *ngFor="let a of apps" tab="schedule">
+            <ion-icon name={{a.icon}} [routerLink]=a.redirectTo></ion-icon>
+            <ion-label>{{a.name}}</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button [routerLink]="['/peliculas']" *ngFor="let p of peliculas" tab="schedule">
+            <ion-icon name={{p.icon}} [routerLink]=p.redirectTo></ion-icon>
+            <ion-label>{{p.name}}</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button [routerLink]="['/libros']" *ngFor="let l of libros" tab="schedule">
+            <ion-icon name={{l.icon}} [routerLink]=l.redirectTo></ion-icon>
+            <ion-label>{{l.name}}</ion-label>
+          </ion-tab-button>
+          </ion-tab-bar>
+      </ion-tabs>
+      
+  </ion-toolbar>
+</ion-footer>
